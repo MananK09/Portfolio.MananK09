@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <script>
+    // tell Tailwind CDN to use "class" dark-mode strategy
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = { darkMode: 'class' };
+  </script>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manan Kushwaha — Portfolio</title>
+  <meta name="description" content="Manan Kushwaha — Frontend Developer / Portfolio" />
+
+  <!-- ⭐ YOU MISSED THIS — REQUIRED FOR ALL YOUR HEADER CLASSES ⭐ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+
+<body class="bg-gray-900 text-gray-100 antialiased">
+
+  <!-- NAVBAR -->
+<!-- ====== Advanced Animated Header (replace old header lines 12-50) ====== -->
+
+<style>
+  /* ---------- animation keyframes (Framer-like) ---------- */
+  @keyframes fm-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fm-slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-12px) scale(0.995);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes fm-pop {
+    from {
+      transform: scale(.85);
+      opacity: 0;
+    }
+
+    60% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fm-stagger {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .anim-slide-down {
+    animation: fm-slide-down 420ms cubic-bezier(.2, .9, .3, 1) both;
+  }
+
+  .anim-fade-up {
+    animation: fm-fade-up 380ms cubic-bezier(.2, .9, .3, 1) both;
+  }
+
+  .anim-pop {
+    animation: fm-pop 420ms cubic-bezier(.2, .9, .3, 1) both;
+  }
+
+  .anim-stagger>* {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: fm-stagger 360ms cubic-bezier(.2, .9, .3, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  .hover-pop:hover {
+    transform: translateY(-3px) scale(1.02);
+    transition: transform 180ms ease;
+  }
+
+  .panel-reveal {
+    transform-origin: top center;
+    animation: fm-slide-down 360ms cubic-bezier(.2, .9, .3, 1) both;
+  }
+
+  .glass-glow {
+    box-shadow: 0 6px 28px rgba(12, 12, 20, 0.36);
+  }
+
+  #advanced-nav {
+    z-index: 60;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .anim-slide-down,
+    .anim-fade-up,
+    .anim-pop,
+    .anim-stagger>* {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<header class="fixed top-4 left-0 right-0 z-50 flex justify-center pointer-events-none">
+  <div class="w-full max-w-7xl px-4 pointer-events-auto">
+    <nav id="advanced-nav"
+      class="backdrop-blur-md bg-white/8 dark:bg-gray-900/50 border border-white/6 dark:border-gray-800/60 rounded-2xl shadow-lg p-3 flex items-center justify-between gap-4 glass-glow anim-slide-down">
+      <!-- Left: Logo -->
+      <div class="flex items-center gap-3">
+        <a href="#home" class="text-lg font-bold tracking-wide text-gray-900 dark:text-white anim-fade-up"
+          style="--delay:0ms">Manan</a>
+        <span class="text-xs text-gray-500 dark:text-gray-400 anim-fade-up" style="--delay:40ms">Portfolio</span>
+      </div>
+
+      <!-- Middle: Menu (desktop) -->
+      <ul class="hidden md:flex gap-6 items-center text-sm text-gray-700 dark:text-gray-300 anim-stagger">
+        <li style="--delay:80ms"><a href="#home" class="hover:text-black dark:hover:text-white transition">Home</a></li>
+        <li style="--delay:120ms"><a href="#projects"
+            class="hover:text-black dark:hover:text-white transition">Projects</a></li>
+        <li style="--delay:160ms"><a href="#skills" class="hover:text-black dark:hover:text-white transition">Skills</a>
+        </li>
+        <li style="--delay:200ms"><a href="#contact"
+            class="hover:text-black dark:hover:text-white transition">Contact</a></li>
+      </ul>
+
+      <!-- Right: Socials + CTA -->
+      <div class="flex items-center gap-3">
+        <!-- social icons (desktop) -->
+        <div class="hidden md:flex gap-3 anim-stagger" id="social-desktop">
+          <a style="--delay:240ms" href="https://github.com/MananK09" target="_blank" rel="noreferrer"
+            aria-label="GitHub"
+            class="p-2 rounded-full hover-pop transform transition-shadow duration-200 shadow-sm hover:shadow-md bg-white/10 dark:bg-white/2 anim-pop">
+            <span class="sr-only">GitHub</span>
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6-.8 1.9-1.3-.3-.1-.7-.4-1.2-.8-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.4 0 0 1-.3 3.4 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.4-1.6 3.4-1.2 3.4-1.2.6 1.8.2 3.1.1 3.4.8.9 1.2 2 1.2 3.3 0 4.6-2.7 5.6-5.3 5.9.4.3.7.9.7 1.9v2.9c0 .4.2.7.8.6C20.7 21.4 24 17.1 24 12 24 5.7 18.3.5 12 .5z" />
+            </svg>
+          </a>
+
+          <a style="--delay:280ms" href="https://www.linkedin.com/in/manan-kushwaha-aa774a2a8/" target="_blank" rel="noreferrer"
+            aria-label="LinkedIn"
+            class="p-2 rounded-full hover-pop transform transition-shadow duration-200 shadow-sm hover:shadow-md bg-white/10 dark:bg-white/2 anim-pop">
+            <span class="sr-only">LinkedIn</span>
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.06h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.57V24h-5V16.4c0-1.83-.03-4.18-2.55-4.18-2.56 0-2.95 2-2.95 4.03V24h-5V8.98z" />
+            </svg>
+          </a>
+
+          <a style="--delay:320ms" href="https://x.com/manankushwaha0" target="_blank" rel="noreferrer"
+            aria-label="Twitter"
+            class="p-2 rounded-full hover-pop transform transition-shadow duration-200 shadow-sm hover:shadow-md bg-white/10 dark:bg-white/2 anim-pop">
+            <span class="sr-only">Twitter</span>
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M23 4.56c-.8.35-1.6.58-2.4.69.86-.52 1.52-1.35 1.83-2.34-.8.48-1.7.82-2.6 1-0.75-.8-1.82-1.3-3-1.3-2.3 0-4.1 1.86-4.1 4.16 0 .33.03.65.1.96-3.4-.17-6.4-1.82-8.4-4.32-.35.6-.5 1.3-.5 2.02 0 1.4.7 2.6 1.8 3.3-.66 0-1.3-.2-1.8-.5v.05c0 2 1.4 3.6 3.3 4-.35.1-.7.14-1.1.14-.27 0-.55-.03-.8-.08.55 1.8 2.16 3.1 4.07 3.15-1.5 1.2-3.4 1.95-5.5 1.95-.36 0-.72-.02-1.07-.06 2 1.3 4.3 2.06 6.8 2.06 8.2 0 12.7-6.8 12.7-12.7v-.58c.86-.63 1.6-1.4 2.2-2.3-.77.34-1.6.57-2.46.67.9-.6 1.6-1.4 2-2.44z" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- CV download button (desktop) -->
+        <a style="--delay:360ms" href="/cv/MananCV.pdf" download
+          class="hidden md:inline-flex items-center gap-2 border px-3 py-1 rounded-full text-sm hover:bg-white hover:text-black transition anim-fade-up">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 3v12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8 11l4 4 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M21 21H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Download CV</span>
+        </a>
+
+        <!-- Theme toggle -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false" data-theme="light"
+        title="Toggle theme">
+        <span class="sr-only">Toggle color theme</span>
+      
+        <svg class="icon icon-sun" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <path fill="currentColor"
+            d="M6.76 4.84l-1.8-1.79L3.17 5.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10-9h2V1h-2v3zm7.03 1.05l1.79-1.8-1.79-1.79-1.8 1.79 1.8 1.8zM17 13h3v-2h-3v2zM12 8a4 4 0 100 8 4 4 0 000-8zM6.76 19.16l-1.79 1.79L5.84 22.83l1.79-1.79-1.87-1.88zM11 23h2v-3h-2v3zm7.03-4.05l1.8 1.79 1.79-1.79-1.79-1.8-1.8 1.8z" />
+        </svg>
+      
+        <svg class="icon icon-moon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <path fill="currentColor" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      
+        <span class="toggle-thumb" aria-hidden="true"></span>
+      </button>
+
+
+
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full border" aria-expanded="false"
+          aria-label="Toggle menu" style="--delay:440ms">
+          <svg id="mobile-menu-open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <svg id="mobile-menu-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu floating panel -->
+    <div id="mobile-panel"
+      class="mt-3 rounded-2xl overflow-hidden shadow-lg bg-white/90 dark:bg-gray-900/90 p-4 hidden panel-reveal">
+      <ul class="flex flex-col gap-3 text-gray-800 dark:text-gray-100">
+        <li><a href="#home" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Home</a></li>
+        <li><a href="#projects" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
+        </li>
+        <li><a href="#skills" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a></li>
+        <li><a href="#contact" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a></li>
+
+        <li class="pt-2 border-t mt-2 flex gap-3 items-center">
+          <div class="flex gap-3">
+            <!-- mobile social icons -->
+            <a href="https://github.com/MananK09" target="_blank" rel="noreferrer"
+              class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                <path
+                  d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6-.8 1.9-1.3-.3-.1-.7-.4-1.2-.8-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.4 0 0 1-.3 3.4 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.4-1.6 3.4-1.2 3.4-1.2.6 1.8.2 3.1.1 3.4.8.9 1.2 2 1.2 3.3 0 4.6-2.7 5.6-5.3 5.9.4.3.7.9.7 1.9v2.9c0 .4.2.7.8.6C20.7 21.4 24 17.1 24 12 24 5.7 18.3.5 12 .5z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/manan-kushwaha-aa774a2a8/" target="_blank" rel="noreferrer"
+              class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.06h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.57V24h-5V16.4c0-1.83-.03-4.18-2.55-4.18-2.56 0-2.95 2-2.95 4.03V24h-5V8.98z" />
+              </svg>
+            </a>
+            <a href="https://x.com/manankushwaha0" target="_blank" rel="noreferrer"
+              class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                <path
+                  d="M23 4.56c-.8.35-1.6.58-2.4.69.86-.52 1.52-1.35 1.83-2.34-.8.48-1.7.82-2.6 1-0.75-.8-1.82-1.3-3-1.3-2.3 0-4.1 1.86-4.1 4.16 0 .33.03.65.1.96-3.4-.17-6.4-1.82-8.4-4.32-.35.6-.5 1.3-.5 2.02 0 1.4.7 2.6 1.8 3.3-.66 0-1.3-.2-1.8-.5v.05c0 2 1.4 3.6 3.3 4-.35.1-.7.14-1.1.14-.27 0-.55-.03-.8-.08.55 1.8 2.16 3.1 4.07 3.15-1.5 1.2-3.4 1.95-5.5 1.95-.36 0-.72-.02-1.07-.06 2 1.3 4.3 2.06 6.8 2.06 8.2 0 12.7-6.8 12.7-12.7v-.58c.86-.63 1.6-1.4 2.2-2.3-.77.34-1.6.57-2.46.67.9-.6 1.6-1.4 2-2.44z" />
+              </svg>
+            </a>
+          </div>
+
+          <a href="/cv/MananCV.pdf" download class="ml-auto px-3 py-1 border rounded">Download CV</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- spacer to avoid content hidden under fixed header -->
+<div class="h-24"></div>
+
+
+  <!-- MAIN -->
+  <main class="pt-24">
+
+    <!-- HERO -->
+    <section id="home" class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- left -->
+      <div>
+        <p class="text-sm uppercase text-yellow-300 font-medium">Hello, I'm</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mt-2">
+          Manan Kushwaha
+        </h1>
+        <p class="mt-4 text-gray-300 max-w-xl">
+          Frontend developer focused on creating fast, responsive, and accessible user interfaces.
+          I build modern websites using HTML, CSS, JavaScript and Tailwind CSS.
+        </p>
+
+        <div class="mt-6 flex gap-3">
+          <a href="#projects" class="px-5 py-3 bg-yellow-400 text-black rounded-md font-medium">See my work</a>
+          <a href="#contact" class="px-5 py-3 border border-gray-700 rounded-md">Contact me</a>
+        </div>
+
+        <div class="mt-8 flex gap-4 items-center">
+          <!-- social placeholders -->
+          <a href="#" class="text-gray-300 hover:text-white">GitHub</a>
+          <a href="#" class="text-gray-300 hover:text-white">LinkedIn</a>
+          <a href="#" class="text-gray-300 hover:text-white">Twitter</a>
+        </div>
+      </div>
+
+      <!-- right / avatar -->
+      <div class="flex justify-center md:justify-end">
+        <div class="w-40 md:w-64 max-h-[60vh] rounded-2xl overflow-hidden ring-4 ring-yellow-400/20">
+          <img src="/avatar.jpg" alt="Manan Kushwaha" class="w-full h-full object-contain" width="640" height="640"
+            loading="lazy" />
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="border-t border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-semibold">About me</h2>
+        <p class="mt-4 text-gray-300 max-w-3xl">
+          I create clean, modern websites and focus on writing maintainable code.
+          I am learning advanced tooling and improving JavaScript skills every day.
+        </p>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-gray-800 p-5 rounded-lg">
+            <h3 class="font-semibold">Experience</h3>
+            <p class="mt-2 text-gray-300">Freelance projects and self-learning</p>
+          </div>
+          <div class="bg-gray-800 p-5 rounded-lg">
+            <h3 class="font-semibold">Education</h3>
+            <p class="mt-2 text-gray-300">Learning web development and tools</p>
+          </div>
+          <div class="bg-gray-800 p-5 rounded-lg">
+            <h3 class="font-semibold">Interests</h3>
+            <p class="mt-2 text-gray-300">UI, accessibility, performance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="border-t border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-semibold">Skills</h2>
+        <p class="mt-3 text-gray-400">Technologies I use</p>
+
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <!-- skill badges -->
+          <div class="bg-gray-800 p-4 rounded-lg text-center">HTML</div>
+          <div class="bg-gray-800 p-4 rounded-lg text-center">CSS</div>
+          <div class="bg-gray-800 p-4 rounded-lg text-center">JavaScript</div>
+          <div class="bg-gray-800 p-4 rounded-lg text-center">Tailwind</div>
+          <div class="bg-gray-800 p-4 rounded-lg text-center">Vite</div>
+          <div class="bg-gray-800 p-4 rounded-lg text-center">Git</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="border-t border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-semibold">Projects</h2>
+            <p class="mt-2 text-gray-400">Selected projects and links</p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- project card 1 -->
+          <article class="bg-gray-800 rounded-lg overflow-hidden">
+            <div class="h-44 bg-gradient-to-br from-purple-600 to-pink-500 flex items-end p-4">
+              <h3 class="text-white text-lg font-semibold">Project One</h3>
+            </div>
+            <div class="p-4">
+              <p class="text-gray-300">Short description of the project.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="#" class="px-3 py-2 bg-yellow-400 text-black rounded">Live</a>
+                <a href="#" class="px-3 py-2 border border-gray-700 rounded">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- project card 2 -->
+          <article class="bg-gray-800 rounded-lg overflow-hidden">
+            <div class="h-44 bg-gradient-to-br from-indigo-600 to-cyan-500 flex items-end p-4">
+              <h3 class="text-white text-lg font-semibold">Project Two</h3>
+            </div>
+            <div class="p-4">
+              <p class="text-gray-300">Short description of the project.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="#" class="px-3 py-2 bg-yellow-400 text-black rounded">Live</a>
+                <a href="#" class="px-3 py-2 border border-gray-700 rounded">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- project card 3 -->
+          <article class="bg-gray-800 rounded-lg overflow-hidden">
+            <div class="h-44 bg-gradient-to-br from-green-600 to-emerald-500 flex items-end p-4">
+              <h3 class="text-white text-lg font-semibold">Project Three</h3>
+            </div>
+            <div class="p-4">
+              <p class="text-gray-300">Short description of the project.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="#" class="px-3 py-2 bg-yellow-400 text-black rounded">Live</a>
+                <a href="#" class="px-3 py-2 border border-gray-700 rounded">Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="border-t border-gray-800">
+      <div class="max-w-4xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-semibold">Contact</h2>
+        <p class="mt-2 text-gray-400">Want to work together? Send a message.</p>
+
+        <form class="mt-6 grid grid-cols-1 gap-4" action="Manankushwaha0@gmail.com" method="post"
+          enctype="text/plain">
+          <input class="p-3 rounded-md bg-gray-800 border border-gray-700" type="text" name="name"
+            placeholder="Your Name" required />
+          <input class="p-3 rounded-md bg-gray-800 border border-gray-700" type="email" name="email"
+            placeholder="Your E-mail" required />
+          <textarea class="p-3 rounded-md bg-gray-800 border border-gray-700" name="message" rows="6"
+            placeholder="Your message" required></textarea>
+          <div class="flex gap-3">
+            <button type="submit" class="px-4 py-3 bg-yellow-400 text-black rounded-md">Send</button>
+            <button type="reset" class="px-4 py-3 border rounded-md">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+  <!-- ====== Advanced Animated Footer (replace old footer lines 209-217) ====== -->
+  <footer
+    class="mt-24 bg-gradient-to-t from-gray-50 to-transparent dark:from-gray-900 text-gray-700 dark:text-gray-300 anim-fade-up">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div>
+          <h4 class="text-lg font-semibold anim-fade-up" style="--delay:0ms">Manan</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400 anim-fade-up" style="--delay:40ms">Building thoughtful
+            front-end and full-stack projects.</p>
+        </div>
+  
+        <div class="flex flex-col items-start md:items-center gap-4">
+          <nav class="flex gap-4 anim-stagger">
+            <a style="--delay:80ms" href="#home" class="hover:text-black dark:hover:text-white transition">Home</a>
+            <a style="--delay:120ms" href="#projects"
+              class="hover:text-black dark:hover:text-white transition">Projects</a>
+            <a style="--delay:160ms" href="#contact" class="hover:text-black dark:hover:text-white transition">Contact</a>
+          </nav>
+          <div class="text-sm text-gray-500 dark:text-gray-400">Want to collaborate? <a href="#contact"
+              class="underline">Get in touch</a></div>
+        </div>
+  
+        <div class="flex flex-col items-end md:items-end gap-3">
+          <div class="flex gap-3 anim-stagger">
+            <a style="--delay:200ms" href="https://github.com/MananK09" target="_blank" rel="noreferrer"
+              aria-label="GitHub" class="p-2 rounded-full hover-pop transform transition">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                <path
+                  d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6-.8 1.9-1.3-.3-.1-.7-.4-1.2-.8-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.4 0 0 1-.3 3.4 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.4-1.6 3.4-1.2 3.4-1.2.6 1.8.2 3.1.1 3.4.8.9 1.2 2 1.2 3.3 0 4.6-2.7 5.6-5.3 5.9.4.3.7.9.7 1.9v2.9c0 .4.2.7.8.6C20.7 21.4 24 17.1 24 12 24 5.7 18.3.5 12 .5z" />
+              </svg>
+            </a>
+            <a style="--delay:240ms" href="https://www.linkedin.com/in/manan-kushwaha-aa774a2a8/" target="_blank" rel="noreferrer"
+              aria-label="LinkedIn" class="p-2 rounded-full hover-pop transform transition">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.06h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.57V24h-5V16.4c0-1.83-.03-4.18-2.55-4.18-2.56 0-2.95 2-2.95 4.03V24h-5V8.98z" />
+              </svg>
+            </a>
+            <a style="--delay:280ms" href="https://x.com/manankushwaha0" target="_blank" rel="noreferrer"
+              aria-label="Twitter" class="p-2 rounded-full hover-pop transform transition">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                <path
+                  d="M23 4.56c-.8.35-1.6.58-2.4.69.86-.52 1.52-1.35 1.83-2.34-.8.48-1.7.82-2.6 1-0.75-.8-1.82-1.3-3-1.3-2.3 0-4.1 1.86-4.1 4.16 0 .33.03.65.1.96-3.4-.17-6.4-1.82-8.4-4.32-.35.6-.5 1.3-.5 2.02 0 1.4.7 2.6 1.8 3.3-.66 0-1.3-.2-1.8-.5v.05c0 2 1.4 3.6 3.3 4-.35.1-.7.14-1.1.14-.27 0-.55-.03-.8-.08.55 1.8 2.16 3.1 4.07 3.15-1.5 1.2-3.4 1.95-5.5 1.95-.36 0-.72-.02-1.07-.06 2 1.3 4.3 2.06 6.8 2.06 8.2 0 12.7-6.8 12.7-12.7v-.58c.86-.63 1.6-1.4 2.2-2.3-.77.34-1.6.57-2.46.67.9-.6 1.6-1.4 2-2.44z" />
+              </svg>
+            </a>
+          </div>
+          <a href="/cv/MananCV.pdf" download
+            class="border px-4 py-2 rounded hover:bg-black hover:text-white transition">Download CV</a>
+        </div>
+      </div>
+  
+      <div class="mt-8 text-xs text-gray-500 dark:text-gray-600 text-center">© <span id="footer-year"></span> Manan — All
+        rights reserved</div>
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- SCRIPTS -->
+<script>
+  // === existing mobile nav toggle (keeps your current behavior) ===
+  const navToggle = document.getElementById('nav-toggle')
+  const mobileNav = document.getElementById('mobile-nav')
+  const navOpen = document.getElementById('nav-open')
+  const navClose = document.getElementById('nav-close')
+
+  navToggle?.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden')
+    navOpen.classList.toggle('hidden')
+    navClose.classList.toggle('hidden')
+  })
+
+  // current year in footer (old footer year) - keep for backward compat
+  document.getElementById('year')?.textContent = new Date().getFullYear()
+
+  // optional: smooth scroll for anchor links (keeps your behavior)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'))
+      if (target) {
+        e.preventDefault()
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        if (!mobileNav.classList.contains('hidden')) {
+          // hide mobile nav after click
+          mobileNav.classList.add('hidden')
+          navOpen.classList.remove('hidden')
+          navClose.classList.add('hidden')
+        }
+      }
+    })
+  })
+
+    // === advanced mobile panel + theme logic (for the new header/footer) ===
+    (function () {
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobilePanel = document.getElementById('mobile-panel');
+      const mobileOpenIcon = document.getElementById('mobile-menu-open');
+      const mobileCloseIcon = document.getElementById('mobile-menu-close');
+      const themeIcon = document.getElementById('theme-icon');
+      const footerYear = document.getElementById('footer-year');
+
+      if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+      function setMobile(open) {
+        if (!mobilePanel) return;
+        mobilePanel.classList.toggle('hidden', !open);
+        if (mobileBtn) mobileBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (mobileOpenIcon && mobileCloseIcon) {
+          mobileOpenIcon.classList.toggle('hidden', open);
+          mobileCloseIcon.classList.toggle('hidden', !open);
+        }
+      }
+
+      let mobileOpen = false;
+      mobileBtn && mobileBtn.addEventListener('click', function () {
+        mobileOpen = !mobileOpen;
+        setMobile(mobileOpen);
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768) {
+          mobileOpen = false;
+          setMobile(false);
+        }
+      });
+
+      document.querySelectorAll('#mobile-panel a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileOpen = false;
+          setMobile(false);
+        });
+      });
+
+      // Modern theme toggle: slider switch + localStorage
+      (function () {
+        const btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+
+        function applyTheme(isDark) {
+          document.documentElement.classList.toggle('dark', isDark);
+          btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+          btn.dataset.theme = isDark ? 'dark' : 'light';
+        }
+
+        // read saved or system default
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark' || saved === 'light') {
+          applyTheme(saved === 'dark');
+        } else {
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          applyTheme(prefersDark);
+        }
+
+        // on click
+        btn.addEventListener('click', () => {
+          const nowDark = !document.documentElement.classList.contains('dark');
+          applyTheme(nowDark);
+          localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+        });
+      })();
+
+
+      let saved = null;
+      try { saved = localStorage.getItem(storageKey); } catch (e) { /* ignore */ }
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = saved || (prefersDark ? 'dark' : 'light');
+      applyTheme(initialTheme);
+
+      themeToggle && themeToggle.addEventListener('click', function () {
+        const nowTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        const next = nowTheme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem(storageKey, next); } catch (e) { }
+        applyTheme(next);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileOpen) {
+          mobileOpen = false;
+          setMobile(false);
+        }
+      });
+    })();
+</script>
+
+</body>
+
+</html>

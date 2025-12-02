@@ -1,0 +1,625 @@
+/* ===========================
+   Your original / base styles
+   (kept exactly as provided, then extended)
+   =========================== */
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* added variables for header/footer and icons (custom) */
+  --social-size: 16px;
+  /* change to 22px / 20px / 18px if you prefer */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-dark-border: rgba(31, 41, 55, 0.6);
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #0f1224; /* optional: matches your theme */
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #f7df1eaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* ===========================
+   Advanced header/footer + icon rules & animations
+   (appended safely)
+   =========================== */
+
+/* ---------- animation keyframes (Framer-like) ---------- */
+@keyframes fm-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fm-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(.995);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fm-pop {
+  from {
+    transform: scale(.85);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fm-stagger {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- animation utilities ---------- */
+.anim-slide-down {
+  animation: fm-slide-down 420ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+.anim-fade-up {
+  animation: fm-fade-up 380ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+.anim-pop {
+  animation: fm-pop 420ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+/* Stagger: children must have inline --delay or will use 0ms */
+.anim-stagger>* {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fm-stagger 360ms cubic-bezier(.2, .9, .3, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .anim-slide-down,
+  .anim-fade-up,
+  .anim-pop,
+  .anim-stagger>* {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ---------- glass and layout helpers ---------- */
+.glass-glow {
+  box-shadow: 0 6px 28px rgba(12, 12, 20, 0.36);
+}
+
+/* target advanced nav container by ID (matches header snippet) */
+#advanced-nav {
+  z-index: 60;
+  /* keep above content */
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  /* fallback padding for non-Tailwind setup */
+  padding: 0.6rem;
+  border-radius: 1rem;
+}
+
+/* darker border in dark mode */
+.dark #advanced-nav {
+  border-color: var(--glass-dark-border);
+}
+
+/* mobile panel reveal helper */
+.panel-reveal {
+  transform-origin: top center;
+  animation: fm-slide-down 360ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+/* ---------- social icon sizing & spacing fixes ---------- */
+/* Target desktop social cluster (from our HTML: #social-desktop) */
+#social-desktop,
+footer .flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Narrow the clickable anchor padding to avoid huge perceived icon size */
+#social-desktop a,
+footer .flex a,
+#mobile-panel .flex a {
+  padding: 0.28rem !important;
+  /* ~4.5px; compact */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  line-height: 0;
+}
+
+/* Force consistent svg icon sizing inside the social areas */
+#social-desktop svg,
+footer .flex svg,
+#mobile-panel svg,
+#advanced-nav svg,
+#advanced-nav .w-5,
+#mobile-panel svg {
+  width: var(--social-size) !important;
+  height: var(--social-size) !important;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* helper class you can add in HTML if desired */
+.social-icon {
+  width: var(--social-size) !important;
+  height: var(--social-size) !important;
+  display: inline-block;
+}
+
+/* tiny hover micro-interaction */
+.hover-pop:hover {
+  transform: translateY(-3px) scale(1.02);
+  transition: transform 180ms ease;
+}
+
+/* ---------- responsive & container helpers ---------- */
+/* cap header width so it doesn't overflow on very small screens */
+#advanced-nav .max-w-7xl,
+.max-w-7xl {
+  max-width: 1120px;
+}
+
+/* spacer utility to ensure header doesn't cover content (same as .h-24) */
+.header-spacer {
+  height: 6rem;
+}
+
+/* ~96px */
+
+/* safe defaults for images referenced */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+/* optional: slightly smaller icons on mobile */
+@media (max-width: 768px) {
+  :root {
+    --social-size: 14px;
+  }
+
+  /* mobile-optimized social icons (targets only the social clusters) */
+  #social-desktop svg,
+  #mobile-panel svg,
+  footer svg,
+  #advanced-nav svg {
+    width: var(--social-size);
+    height: var(--social-size);
+  }
+}
+
+/* ---------- accessibility helpers ---------- */
+[aria-expanded="true"] {
+  outline: none;
+}
+
+/* ---------- fallback classes if Tailwind missing (harmless) ---------- */
+.hidden {
+  display: none !important;
+}
+
+/* End of cleaned style.css section */
+
+/* ================= Advanced polish (drop at BOTTOM of style.css) ================= */
+
+/* Variables */
+:root {
+  --accent: #ffd400;
+  --muted: #9aa0b4;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glow: rgba(255, 212, 64, 0.12);
+}
+
+/* ---------------- Micro animations & reveal ---------------- */
+@keyframes polish-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+@keyframes polish-pop {
+  from {
+    opacity: 0;
+    transform: scale(.96)
+  }
+
+  60% {
+    transform: scale(1.03);
+    opacity: 1
+  }
+
+  to {
+    transform: none
+  }
+}
+
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translateY(6px);
+}
+
+.reveal.is-visible {
+  animation: polish-fade-up 520ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+/* small pop used on the name */
+.pop-in {
+  animation: polish-pop 520ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+/* ---------------- Buttons & focus polishing ---------------- */
+a[class*="px-"],
+.btn,
+button {
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s;
+  will-change: transform, box-shadow;
+}
+
+a[class*="px-"]:hover,
+.btn:hover,
+button:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+a[class*="px-"]:active,
+.btn:active,
+button:active {
+  transform: translateY(-1px) scale(.995);
+}
+
+/* Accessible focus ring (visible but subtle) */
+:focus-visible {
+  outline: 3px solid rgba(255, 212, 64, 0.18);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* ---------------- Avatar subtle glow + float ---------------- */
+.avatar-wrap {
+  position: relative;
+  overflow: visible;
+  transition: transform .45s cubic-bezier(.2, .9, .3, 1);
+}
+
+.avatar-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 212, 64, 0.08), transparent 30%);
+  filter: blur(18px);
+  pointer-events: none;
+  opacity: .9;
+  z-index: -1;
+  transition: opacity .45s;
+}
+
+.avatar-wrap:hover {
+  transform: translateY(-6px);
+}
+
+.avatar-wrap img {
+  display: block;
+}
+
+/* small floating animation */
+@keyframes subtle-float {
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-6px)
+  }
+
+  100% {
+    transform: translateY(0)
+  }
+}
+
+.avatar-float {
+  animation: subtle-float 5s ease-in-out infinite;
+}
+
+/* ---------------- Project card 3D tilt (simple & performant) ---------------- */
+.proj-card {
+  perspective: 900px;
+}
+
+.proj-card-inner {
+  transform-origin: center center;
+  transition: transform .28s cubic-bezier(.2, .9, .3, 1), box-shadow .28s;
+  will-change: transform, box-shadow;
+  border-radius: 12px;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.proj-card:hover .proj-card-inner {
+  transform: translateY(-8px) rotateX(4deg) rotateY(-6deg);
+  box-shadow: 0 22px 60px rgba(2, 6, 23, 0.6);
+}
+
+/* small shine pseudo-element on hover */
+.proj-card-inner::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity .35s;
+}
+
+.proj-card:hover .proj-card-inner::after {
+  opacity: .12;
+}
+
+/* ---------------- Social icon micro-sizing (keeps consistency with Tailwind utilities) ---------------- */
+#social-desktop svg,
+#mobile-panel svg,
+footer svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------------- Scroll reveal helper (no JS here) ---------------- */
+.reveal-delay-1 {
+  transition-delay: 70ms;
+}
+
+.reveal-delay-2 {
+  transition-delay: 140ms;
+}
+
+.reveal-delay-3 {
+  transition-delay: 220ms;
+}
+
+/* ---------------- Respect reduced motion ---------------- */
+@media (prefers-reduced-motion: reduce) {
+
+  .avatar-float,
+  .proj-card-inner,
+  .reveal.is-visible,
+  .pop-in {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ================= end polish ================= */
+/* ---------- Theme toggle (robust, uses calc so thumb always lands correctly) ---------- */
+.theme-toggle {
+  --track-light: rgba(255, 255, 255, 0.06);
+  --track-dark: linear-gradient(90deg, #0f1724, #07080a);
+  --thumb-size: 20px;
+  width: 48px;
+  /* total width of control */
+  height: 28px;
+  /* total height */
+  padding: 4px;
+  /* inner padding */
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: var(--track-light);
+  transition: background .22s ease, border-color .22s ease, box-shadow .22s ease;
+  cursor: pointer;
+}
+
+.theme-toggle .toggle-thumb {
+  --thumb-offset: calc((var(--thumb-size) - var(--thumb-size)) * 0);
+  /* noop, fallback */
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  /* initial left inside padding */
+  transform: translateY(-50%) translateX(0);
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #fff, #e6e6e6);
+  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.35);
+  transition: transform .28s cubic-bezier(.2, .9, .3, 1), background .22s;
+  will-change: transform;
+  z-index: 2;
+}
+
+/* Move thumb to right using calc that accounts for width/padding */
+.theme-toggle[data-theme="dark"] .toggle-thumb {
+  transform: translateY(-50%) translateX(calc((48px - 4px - var(--thumb-size))));
+  background: radial-gradient(circle at 30% 30%, #ffd400, #ffa000 40%);
+  box-shadow: 0 6px 20px rgba(255, 160, 64, 0.12);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.95);
+  transition: opacity .18s ease;
+}
+
+.theme-toggle .icon-sun {
+  left: 8px;
+}
+
+.theme-toggle .icon-moon {
+  right: 8px;
+}
+
+.theme-toggle[data-theme="light"] .icon-sun {
+  opacity: 1;
+}
+
+.theme-toggle[data-theme="light"] .icon-moon {
+  opacity: 0.18;
+  filter: grayscale(100%);
+}
+
+.theme-toggle[data-theme="dark"] .icon-sun {
+  opacity: 0.18;
+  filter: grayscale(100%);
+}
+
+.theme-toggle[data-theme="dark"] .icon-moon {
+  opacity: 1;
+}
+
+/* keyboard focus */
+.theme-toggle:focus-visible {
+  outline: 3px solid rgba(255, 212, 64, 0.18);
+  outline-offset: 3px;
+  border-radius: 9999px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .theme-toggle,
+  .theme-toggle .toggle-thumb {
+    transition: none !important;
+  }
+}
